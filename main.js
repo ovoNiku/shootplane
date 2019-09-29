@@ -24,20 +24,20 @@ var enableDebugMode = function (game, enable) {
 
 var __main = function () {
     var images = {
-        plane: 'static/images/plane.png',
-        bullet: 'static/images/bullet.png',
-        boom: 'static/images/boom.png',
-        bg0: 'static/images/bg0.png',
-        bg1: 'static/images/bg1.png',
-        cloud0: 'static/images/cloud0.png',
-        cloud1: 'static/images/cloud1.png',
-        cloud2: 'static/images/cloud2.png',
-        enemy0: 'static/images/enemy0.png',
-        enemy1: 'static/images/enemy1.png',
-        enemy2: 'static/images/enemy2.png',
-        enemy3: 'static/images/enemy3.png',
-        enemy4: 'static/images/enemy4.png',
-        enemy5: 'static/images/enemy5.png',
+        plane: 'images/plane.png',
+        bullet: 'images/bullet.png',
+        particle: 'images/particle.png',
+        bg0: 'images/bg0.png',
+        bg1: 'images/bg1.png',
+        cloud0: 'images/cloud0.png',
+        cloud1: 'images/cloud1.png',
+        cloud2: 'images/cloud2.png',
+        enemy0: 'images/enemy0.png',
+        enemy1: 'images/enemy1.png',
+        enemy2: 'images/enemy2.png',
+        enemy3: 'images/enemy3.png',
+        enemy4: 'images/enemy4.png',
+        enemy5: 'images/enemy5.png',
     }
     var game = new Game(30, images, function () {
         var s = new TitleScene(game)
