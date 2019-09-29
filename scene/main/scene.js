@@ -13,6 +13,7 @@ class Scene extends BaseScene {
         this.bg.w = 800
         this.bg.h = 1000
         this.plane = new Plane(this.game)
+
         this.addElements(this.bg)
         this.addEnemies()
         this.addElements(this.plane)
@@ -53,14 +54,15 @@ class Scene extends BaseScene {
 
     draw() {
         super.draw()
-        this.game.context.font = "40pt Georgia";
-        this.game.context.fillStyle = "black";
-        this.game.context.fillText('score: ' + this.score, 10, 50, 100)
+        this.game.context.font = "80pt Georgia";
+        this.game.context.fillStyle = "white";
+        this.game.context.fillText('score: ' + this.score, 20, 80, 200)
     }
 
     update() {
         super.update()
         this.enemies = this.enemies.filter(e => e.alive === true)
+        var ps = []
         for (var b of this.plane.bullets) {
             for (var e of this.enemies) {
                 if (e.collide(b)) {
@@ -68,14 +70,20 @@ class Scene extends BaseScene {
                     this.removeElements(b)
                     b.valid = true
                     e.killed()
+                    //敌机消灭产生火花
+                    var p = new ParticleSystem(this.game, e.x + e.w / 2, e.y + e.h / 2)
+                    ps.push(p)
+                    this.addElements(p)
                     this.score += 100
                 }
             }
         }
-        // if (this.plane.lives === 0) {
-        //     var s = new EndScene(this.game)
-        //     this.game.replaceScene(s)
-        // }
+        this.particles = ps
+        for (var p of this.particles) {
+            if (p.duration < 0) {
+                this.removeElements(p)
+            }
+        }
     }
 }
 

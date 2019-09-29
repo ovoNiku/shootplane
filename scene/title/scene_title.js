@@ -6,6 +6,7 @@ class TitleScene extends BaseScene {
             game.replaceScene(s)
         })
         this.setup()
+
     }
 
     setup() {

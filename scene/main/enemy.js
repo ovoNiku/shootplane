@@ -4,7 +4,7 @@ class Enemy extends NikuImage {
         var name = 'enemy' + type
         super(game, name)
         this.setup()
-        this.booms = []
+        // this.booms = []
     }
 
     setup() {
@@ -16,17 +16,13 @@ class Enemy extends NikuImage {
 
     killed() {
         this.alive = false
-        var boom = new Boom(this.game)
-        boom.x = this.x
-        boom.y = this.y
-        this.scene.addElements(boom)
-        this.booms.push(boom)
+        // this.booms.push(boom)
         // this.booms = this.booms.filter(b => b.alive === false)
-        setTimeout(function () {
-            for (let i = 0; i < this.booms.length; i++) {
-                this.scene.removeElements(this.booms[i])
-            }
-        }, 3000)
+        // setTimeout(function () {
+        //     for (let i = 0; i < this.booms.length; i++) {
+        //         this.scene.removeElements(this.booms[i])
+        //     }
+        // }, 3000)
     }
 
     update() {
