@@ -1,6 +1,11 @@
 class Bullet extends NikuImage {
-    constructor(game) {
-        super(game, 'bullet')
+    constructor(game, type) {
+        var name = 'bullet1'
+        if (type === 'plane') {
+            name = 'bullet0'
+        }
+        super(game, name)
+        this.type = type
         this.setup()
     }
 
@@ -10,7 +15,11 @@ class Bullet extends NikuImage {
     }
 
     update() {
-        this.y -= this.speed
+        if (this.type === 'plane') {
+            this.y -= this.speed
+        } else {
+            this.y += this.speed
+        }
     }
 }
 

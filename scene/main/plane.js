@@ -16,14 +16,14 @@ class Plane extends NikuImage {
         if (this.x < 0) {
             this.x = 0
         }
-        if (this.x > 540) {
-            this.x = 540
+        if (this.x > 600 + this.w / 2) {
+            this.x = 600 + this.w / 2
         }
         if (this.y < 0) {
             this.y = 0
         }
-        if (this.y > 900) {
-            this.y = 900
+        if (this.y > 900 - this.h / 2) {
+            this.y = 900 - this.h / 2
         }
     }
 
@@ -36,10 +36,10 @@ class Plane extends NikuImage {
 
     fire() {
         if (this.cooldown === 0) {
-            this.cooldown = 5
+            this.cooldown = 10
             var x = this.x + this.w / 2
             var y = this.y
-            var b = new Bullet(this.game)
+            var b = new Bullet(this.game, 'plane')
             b.x = x
             b.y = y
             this.scene.addElements(b)

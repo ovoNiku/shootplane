@@ -9,7 +9,7 @@ class ParticleSystem {
     setup() {
         this.particles = []
         this.particleNum = 20
-        this.duration = 50
+        this.duration = 30
     }
 
     update() {
@@ -17,7 +17,7 @@ class ParticleSystem {
         //添加
         if (this.particles.length < this.particleNum) {
             var p = new Particle(this.game)
-            var s = 2
+            var s = 0.5
             var vx = randomBetween(-s, s)
             var vy = randomBetween(-s, s)
             p.init(this.x, this.y, vx, vy)

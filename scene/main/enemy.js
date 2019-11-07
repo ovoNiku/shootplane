@@ -1,28 +1,29 @@
 class Enemy extends NikuImage {
     constructor(game) {
-        var type = randomBetween(0, 5)
+        var type = randomBetween(0, 2)
         var name = 'enemy' + type
         super(game, name)
+        this.type = type
         this.setup()
-        // this.booms = []
     }
 
     setup() {
         this.speed = randomBetween(2, 5)
-        this.x = randomBetween(0, 400)
-        this.y = randomBetween(0, -200)
-        this.alive = true
+        this.x = randomBetween(50, 700)
+        this.y = randomBetween(0, -400)
+        this.cooldown = 0
+        this.bullets = []
     }
 
-    killed() {
-        this.alive = false
-        // this.booms.push(boom)
-        // this.booms = this.booms.filter(b => b.alive === false)
-        // setTimeout(function () {
-        //     for (let i = 0; i < this.booms.length; i++) {
-        //         this.scene.removeElements(this.booms[i])
-        //     }
-        // }, 3000)
+    fire() {
+        if (this.cooldown === 0) {
+            this.cooldown = 100
+            var b = new Bullet(this.game, 'enemy')
+            b.x = this.x + this.w / 2
+            b.y = this.y + this.h
+            this.scene.addElements(b)
+            this.bullets.push(b)
+        }
     }
 
     update() {
@@ -30,7 +31,10 @@ class Enemy extends NikuImage {
         if (this.y > 1000) {
             this.setup()
         }
-
+        if (this.cooldown > 0) {
+            this.cooldown--
+        }
+        this.bullets = this.bullets.filter(b => b.valid === false)
     }
 }
 
